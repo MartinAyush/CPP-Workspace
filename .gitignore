@@ -1,0 +1,10 @@
+*.exe
+*.vscode
+*.cpp__tests
+*.txt
+*.swp
+*.sublime-workspace
+*.class
+*.py
+*.java
+*.md
