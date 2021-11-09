@@ -3,6 +3,16 @@ using namespace std;
 
 // use head as ref(&) for insertion and deletion
 
+// insert without constructor
+/*
+    Node* head = new LLNode();
+    LLNode* f = new LLNode();
+    f = head;
+    LLNode* n = new LLNode(x -> val);
+    f -> next = n;
+    f = f -> next;
+*/
+
 class Node{
     public: 
         int data;
