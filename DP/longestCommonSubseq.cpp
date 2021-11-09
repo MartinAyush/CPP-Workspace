@@ -26,6 +26,23 @@ int lcs(string s1, string s2, int n, int m){
     return dp[n][m];
 }
 
+void printLCS(){
+    string ans = "";
+    int i = n, j = m;
+    while(i > 0 and j > 0){ // starting from bottom right 
+        if(s1[i-1] == s2[j-1]){
+            ans += s1[i-1];
+            i--;
+            j--;
+        }else if(dp[i-1][j] > dp[i][j-1]){
+            i--;
+        }else{
+            j--;
+        }
+    }
+    reverse(ans.begin(), ans.end());
+    cout << ans << "\n";
+}
 
 int main(){
     string s1 = "AGGTAB";
