@@ -2,6 +2,8 @@
 using namespace std;
 
 // Problem:- Given an array of integers, find the length of the longest (strictly) increasing subsequence from the given array.
+// Time complexity = O(N^2)
+// Space complexity = O(N)
 
 void lis(vector<int> a, int n){
     vector<int> dp(n, 0); // stores the count of smaller elements from [0..i-1]
