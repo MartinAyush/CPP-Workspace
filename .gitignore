@@ -1,5 +1,4 @@
 *.exe
-*.vscode
 *.cpp__tests
 *.txt
 *.swp
