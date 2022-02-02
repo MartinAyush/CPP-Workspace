@@ -4,7 +4,7 @@ using namespace std;
 // Largest area in histogram
 
 void naive(){
-    vector<int> a = {6, 2, 5, 4, 1, 5, 6};
+    vector<int> a = {2,1,5,6,2,3};
     int ans = 0;
     for(int i = 0; i < a.size(); i++){
         // in every iteration every element being the smallest element;
@@ -37,6 +37,6 @@ void naive(){
 
 int main(){
     vector<int> a = {6, 2, 5, 4, 1, 5, 6};
-
+    naive();
     return 0;
 }
