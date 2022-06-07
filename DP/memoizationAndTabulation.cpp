@@ -3,8 +3,7 @@ using namespace std;
 
 // Memoization -> top down
 int fib(int n){
-    vector<int> dp(n+1);
-    fill(dp.begin(), dp.end(), -1);
+    vector<int> dp(n+1, -1);
     if(dp[n] == -1){
         int res;
         if(n == 0 || n == 1){
@@ -19,8 +18,7 @@ int fib(int n){
 
 // Tabulation -> bottom up
 int fibo(int n){
-    vector<int> dp(n+1);
-    fill(dp.begin(), dp.end(), -1);
+    vector<int> dp(n+1, -1);
     dp[0] = 0;
     dp[1] = 1;
     for(int i = 2; i <= n; i++){

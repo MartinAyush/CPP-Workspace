@@ -159,7 +159,7 @@ bool pairSum(Node* head, int sum, unordered_set<int> &s){
     return check(head -> right, sum, s);
 }
 
-// Virtical sum of binary seach tree
+// Vertical sum of binary seach tree
 // O(n*log(n))
 void HDistance(Node* head, int hd, map<int, int> &m){ // hd = horizontal distance
     if(head == NULL){

@@ -1,54 +1,66 @@
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
 
-class Node{
-    public:
-        int data;
-        Node* left;
-        Node* right;
-        Node(int x){
-            data = x;
-            left = right = NULL;
-        }
+class Node
+{
+public:
+    int data;
+    Node *left;
+    Node *right;
+    Node(int x)
+    {
+        data = x;
+        left = right = NULL;
+    }
 };
 
-void levelOrder1(Node* head){
-    queue<Node*> q;
+void levelOrder1(Node *head)
+{
+    queue<Node *> q;
     q.push(head);
     q.push(NULL);
-    while(q.size() > 1){
-        Node* x = q.front();
+    while (q.size() > 1)
+    {
+        Node *x = q.front();
         q.pop();
-        if(x == NULL){
+        if (x == NULL)
+        {
             cout << '\n';
             q.push(NULL);
             continue;
         }
-        cout << x -> data << " ";
-        if(x -> left != NULL){
-            q.push(x -> left);
+        cout << x->data << " ";
+        if (x->left != NULL)
+        {
+            q.push(x->left);
         }
-        if(x -> right != NULL){
-            q.push(x -> right);
+        if (x->right != NULL)
+        {
+            q.push(x->right);
         }
     }
 }
 
 // Best
-void levelOrder2(Node* head){
-    queue<Node*> q;
+void levelOrder2(Node *head)
+{
+    queue<Node *> q;
     q.push(head);
-    while(!q.empty()){
+    while (!q.empty())
+    {
         int n = q.size();
-        for(int i = 0; i < n; i++){
-            Node* x = q.front();
+        for (int i = 0; i < n; i++)
+        {
+            Node *x = q.front();
             q.pop();
-            cout << x -> data << " ";
-            if(x -> left != NULL){
-                q.push(x -> left);
+            cout << x->data << " ";
+            if (x->left != NULL)
+            {
+                q.push(x->left);
             }
-            if(x -> right != NULL){
-                q.push(x -> right);
+            if (x->right != NULL)
+            {
+                q.push(x->right);
             }
         }
         cout << '\n';
@@ -59,23 +71,29 @@ void levelOrder2(Node* head){
 // every element enters in the queue once
 // loop runs for the the each level
 // o(n)
-void kThLevelOfTreeIterative(Node* head, int k){
-    queue<Node*> q;
+void kThLevelOfTreeIterative(Node *head, int k)
+{
+    queue<Node *> q;
     q.push(head);
     int tt = 0;
-    while(!q.empty()){
+    while (!q.empty())
+    {
         int n = q.size();
-        for(int i = 0; i < n; i++){
-            Node* x = q.front();
+        for (int i = 0; i < n; i++)
+        {
+            Node *x = q.front();
             q.pop();
-            if(tt == k){
-                cout << x -> data << " ";
+            if (tt == k)
+            {
+                cout << x->data << " ";
             }
-            if(x -> left != NULL){
-                q.push(x -> left);
+            if (x->left != NULL)
+            {
+                q.push(x->left);
             }
-            if(x -> right != NULL){
-                q.push(x -> right);
+            if (x->right != NULL)
+            {
+                q.push(x->right);
             }
         }
         tt++;
@@ -84,187 +102,238 @@ void kThLevelOfTreeIterative(Node* head, int k){
 
 // Better
 // O(h) where h is the height of the binary tree
-void kThLevelOfTreeRecursive(Node* head, int k){
-    if(head == NULL){
+void kThLevelOfTreeRecursive(Node *head, int k)
+{
+    if (head == NULL)
+    {
         return;
     }
-    if(k == 0){
-        cout << head -> data << " ";
-    }else{
-        kThLevelOfTreeRecursive(head -> left, k-1);
-        kThLevelOfTreeRecursive(head -> right, k-1);
+    if (k == 0)
+    {
+        cout << head->data << " ";
+    }
+    else
+    {
+        kThLevelOfTreeRecursive(head->left, k - 1);
+        kThLevelOfTreeRecursive(head->right, k - 1);
     }
     return;
 }
 
-void leftView(Node* head){
-    if(head == NULL){
+void leftView(Node *head)
+{
+    if (head == NULL)
+    {
         return;
     }
-    queue<Node*> q;
+    queue<Node *> q;
     q.push(head);
-    while(!q.empty()){
+    while (!q.empty())
+    {
         int n = q.size();
-        for(int i = 0; i < n; i++){
-            Node* x = q.front();
+        for (int i = 0; i < n; i++)
+        {
+            Node *x = q.front();
             q.pop();
-            if(i == 0){ // left -> right === 0 -> n-1
-                cout << x -> data << " ";
+            if (i == 0)
+            { // left -> right === 0 -> n-1
+                cout << x->data << " ";
             }
-            if(x -> left != NULL){
-                q.push(x -> left);
+            if (x->left != NULL)
+            {
+                q.push(x->left);
             }
-            if(x -> right != NULL){
-                q.push(x -> right);
+            if (x->right != NULL)
+            {
+                q.push(x->right);
             }
         }
         // cout << '\n';
     }
 }
 
-void rightView(Node* head){
-    if(head == NULL){
+void rightView(Node *head)
+{
+    if (head == NULL)
+    {
         return;
     }
-    queue<Node*> q;
+    queue<Node *> q;
     q.push(head);
-    while(!q.empty()){
+    while (!q.empty())
+    {
         int n = q.size();
-        for(int i = 0 ; i < n; i++){
-            Node* x = q.front();
+        for (int i = 0; i < n; i++)
+        {
+            Node *x = q.front();
             q.pop();
-            if(i == n-1){
-                cout << x -> data << " ";
+            if (i == n - 1)
+            {
+                cout << x->data << " ";
             }
-            if(x -> left != NULL){
-                q.push(x -> left);
+            if (x->left != NULL)
+            {
+                q.push(x->left);
             }
-            if(x -> right != NULL){
-                q.push(x -> right);
+            if (x->right != NULL)
+            {
+                q.push(x->right);
             }
         }
     }
-
 }
 
-bool childrenSumProperty(Node* head){
-    if(head == NULL){
+bool childrenSumProperty(Node *head)
+{
+    if (head == NULL)
+    {
         return true;
     }
-    if(head -> left == NULL && head -> right == NULL){
+    if (head->left == NULL && head->right == NULL)
+    {
         return true;
     }
     int sum = 0;
-    if(head -> left != NULL){
-        sum += head -> left -> data;
+    if (head->left != NULL)
+    {
+        sum += head->left->data;
     }
-    if(head -> right != NULL){
-        sum += head -> right -> data;
+    if (head->right != NULL)
+    {
+        sum += head->right->data;
     }
-    return ((head -> data == sum) && childrenSumProperty(head -> left) && childrenSumProperty(head -> right));
+    return ((head->data == sum) && childrenSumProperty(head->left) && childrenSumProperty(head->right));
 }
 
 // returns -1 if not balanced else height of tree
-int isBalanced(Node* head){
-    if(head == NULL){
+int isBalanced(Node *head)
+{
+    if (head == NULL)
+    {
         return 0;
     }
-    int leftHeight = isBalanced(head -> left);
-    if(leftHeight == -1){
+    int leftHeight = isBalanced(head->left);
+    if (leftHeight == -1)
+    {
         return -1;
     }
-    int rightHeight = isBalanced(head -> right);
-    if(rightHeight == -1){
+    int rightHeight = isBalanced(head->right);
+    if (rightHeight == -1)
+    {
         return -1;
     }
-    if(abs(leftHeight-rightHeight) > 1){
+    if (abs(leftHeight - rightHeight) > 1)
+    {
         return -1;
     }
     return max(leftHeight, rightHeight) + 1;
 }
 
-int maxWidthOfTree(Node* head){
-    if(head == NULL){
+int maxWidthOfTree(Node *head)
+{
+    if (head == NULL)
+    {
         return 0;
     }
-    queue<Node*> q;
+    queue<Node *> q;
     q.push(head);
     int size = 0;
-    while(!q.empty()){
+    while (!q.empty())
+    {
         int n = q.size();
         size = max(size, n);
-        for(int i = 0; i < n; i++){
-            Node* x = q.front();
+        for (int i = 0; i < n; i++)
+        {
+            Node *x = q.front();
             q.pop();
-            if(x -> left != NULL){
-                q.push(x -> left);
+            if (x->left != NULL)
+            {
+                q.push(x->left);
             }
-            if(x -> right != NULL){
-                q.push(x -> right);
+            if (x->right != NULL)
+            {
+                q.push(x->right);
             }
         }
     }
     return size;
 }
 
-// convert binary tree to doubly linked list 
-void bToDLL(Node* head, Node* &root, Node* &prev, int &flag){
-    if(head == NULL){
+// convert binary tree to doubly linked list
+void bToDLL(Node *head, Node *&root, Node *&prev, int &flag)
+{
+    if (head == NULL)
+    {
         return;
-    }    
-    // first go left deep
-    bToDLL(head -> left, root, prev, flag);
-    if(flag == 0){ // if DLL is empty
-        flag = 1; 
-        root = head; // make new head of DLL 
-        prev = head; // prev also points to the head in starting
-    }else{ // add data through prev
-        prev -> right = head; // right is next && left is prev in DLL
-        prev -> right -> left = prev;
-        prev = prev -> right;
     }
-    bToDLL(head -> right, root, prev, flag);
+    // first go left deep
+    bToDLL(head->left, root, prev, flag);
+    if (flag == 0)
+    { // if DLL is empty
+        flag = 1;
+        root = head; // make new head of DLL
+        prev = head; // prev also points to the head in starting
+    }
+    else
+    {                       // add data through prev
+        prev->right = head; // right is next && left is prev in DLL
+        prev->right->left = prev;
+        prev = prev->right;
+    }
+    bToDLL(head->right, root, prev, flag);
 }
 
-Node* binaryToDLL(Node* head){
-    if(head == NULL){
+Node *binaryToDLL(Node *head)
+{
+    if (head == NULL)
+    {
         return NULL;
     }
-    Node* root = NULL;
-    Node* prev = NULL;
+    Node *root = NULL;
+    Node *prev = NULL;
     int flag = 0;
     bToDLL(head, root, prev, flag);
     return root;
 }
 
 // O(n)
-void spiralForm(Node* head){
-    queue<Node*> q;
+void spiralForm(Node *head)
+{
+    queue<Node *> q;
     q.push(head);
     int flag = true;
     vector<int> v;
-    while(!q.empty()){
+    while (!q.empty())
+    {
         int n = q.size();
-        for(int i = 0; i < n; i++){
-            Node* x = q.front();
+        for (int i = 0; i < n; i++)
+        {
+            Node *x = q.front();
             q.pop();
-            v.push_back(x -> data);
-            if(x -> left != NULL){
-                q.push(x -> left);
+            v.push_back(x->data);
+            if (x->left != NULL)
+            {
+                q.push(x->left);
             }
-            if(x -> right != NULL){
-                q.push(x -> right);
+            if (x->right != NULL)
+            {
+                q.push(x->right);
             }
         }
-        if(flag){
+        if (flag)
+        {
             flag = false;
-            for(int i = 0; i < v.size(); i++){
+            for (int i = 0; i < v.size(); i++)
+            {
                 cout << v[i] << " ";
             }
             v.clear();
-        }else{
+        }
+        else
+        {
             flag = true;
-            for(int i = v.size()-1; i >= 0; i--){
+            for (int i = v.size() - 1; i >= 0; i--)
+            {
                 cout << v[i] << " ";
             }
             v.clear();
@@ -272,13 +341,15 @@ void spiralForm(Node* head){
     }
 }
 
-int diameterOfTree(Node* head, int &diameter){
-    if(head == NULL){
+int diameterOfTree(Node *head, int &diameter)
+{
+    if (head == NULL)
+    {
         return 0;
     }
-    int leftHeight = diameterOfTree(head -> left);
-    int rightHeight = diameterOfTree(head -> right);
-    diameter = max(diameter, 1+leftHeight+rightHeight);
+    int leftHeight = diameterOfTree(head->left);
+    int rightHeight = diameterOfTree(head->right);
+    diameter = max(diameter, 1 + leftHeight + rightHeight);
     return 1 + max(leftHeight, rightHeight);
 }
 
@@ -289,59 +360,71 @@ int diameterOfTree(Node* head, int &diameter){
 //     return 1 + countNodes(head -> left) + countNodes(head -> right);
 // }
 
-int countNodes(Node* head){
+int countNodes(Node *head)
+{
     int lh = 0, rh = 0;
-    Node* temp = head;
-    while(temp != NULL){
+    Node *temp = head;
+    while (temp != NULL)
+    {
         lh++;
-        temp = temp -> left;
-    }   
-    temp = head;
-    while(temp != NULL){
-        rh++;
-        temp = temp -> right;
+        temp = temp->left;
     }
-    if(lh == rh){
+    temp = head;
+    while (temp != NULL)
+    {
+        rh++;
+        temp = temp->right;
+    }
+    if (lh == rh)
+    {
         return pow(2, lh) - 1;
     }
-    return 1 + countNodes(head -> left) + countNodes(head -> right);
+    return 1 + countNodes(head->left) + countNodes(head->right);
 }
 
 // pre Order = root left right
-void serialize(Node* head, vector<int> &toArr){
-    if(head == NULL){
+void serialize(Node *head, vector<int> &toArr)
+{
+    if (head == NULL)
+    {
         toArr.push_back(-1);
         return;
     }
-    toArr.push_back(head -> data);
-    serialize(head -> left, toArr);
-    serialize(head -> right, toArr);
+    toArr.push_back(head->data);
+    serialize(head->left, toArr);
+    serialize(head->right, toArr);
 }
 
-Node* deSerialize(vector<int> &a, int &index){
-    if(index == a.size()){
+Node *deSerialize(vector<int> &a, int &index)
+{
+    if (index == a.size())
+    {
         return NULL;
     }
     int x = a[index];
     index++;
-    if(x == -1){
+    if (x == -1)
+    {
         return NULL;
     }
-    Node* head = new Node(x);
-    head -> left = deSerialize(a, index);
-    head -> right = deSerialize(a, index);
+    Node *head = new Node(x);
+    head->left = deSerialize(a, index);
+    head->right = deSerialize(a, index);
     return head;
 }
 
-void inOrder(Node* head){
-    if(head != NULL){
-        inOrder(head -> left);
-        cout << head -> data << " ";
-        inOrder(head -> right);
+void inOrder(Node *head)
+{
+    if (head != NULL)
+    {
+        inOrder(head->left);
+        cout << head->data << " ";
+        inOrder(head->right);
     }
 }
 
-int main(){
+int main()
+{
 
     // Node* head = new Node(10);
     // head -> left = new Node(20);
@@ -457,6 +540,5 @@ int main(){
     // Node* head1 = deSerialize(toArr, index);
     // inOrder(head1);
 
-
     return 0;
-}   
+}
