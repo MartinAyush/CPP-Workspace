@@ -1,23 +1,37 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+void reve(vector<int> &arr, int start, int end)
+{
+    while (start < end)
+    {
+        swap(arr[start++], arr[end--]);
+    }
+}
+
+void leftToRight(vector<int> &a, int n, int k)
+{
+    reve(a, 0, k - 1);
+    reve(a, k, n - 1);
+    reve(a, 0, n - 1);
+}
+
 int main()
 {
-    int n;
+    int n, k;
     cin >> n;
-    string str;
-    cin >> str;
-    if (str.empty())
-    {
-        cout << -1;
-        return 0;
-    }
-    unordered_map<char, int> m;
+    vector<int> arr(n);
     for (int i = 0; i < n; i++)
     {
-        m[str[i]]++;
+        cin >> arr[i];
     }
-    cout << m.size();
+    cin >> k;
+
+    leftToRight(arr, n, k);
+    for (int i = 0; i < n; i++)
+    {
+        cout << arr[i] << " ";
+    }
 
     return 0;
 }
