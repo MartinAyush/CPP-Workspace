@@ -1,6 +1,7 @@
 #include<bits/stdc++.h>
 using namespace std;
 
+// Left to Right Rotation
 void leftRotation(vector<int> &a, int k){
     int n = a.size();
     for(int i = 0; i < k; i++){
@@ -12,6 +13,7 @@ void leftRotation(vector<int> &a, int k){
     }
 }
 
+// right to left Rotation
 void rightRotation(vector<int> &a, int k){
     int n = a.size();
     for(int i = 0; i < k; i++){

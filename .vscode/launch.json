@@ -5,27 +5,6 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "type": "java",
-            "name": "Launch test",
-            "request": "launch",
-            "mainClass": "test",
-            "projectName": "C++_af93ea8"
-        },
-        {
-            "type": "java",
-            "name": "Launch codel4",
-            "request": "launch",
-            "mainClass": "codel4",
-            "projectName": "C++_af93ea8"
-        },
-        {
-            "type": "java",
-            "name": "Launch HelloWorld",
-            "request": "launch",
-            "mainClass": "HelloWorld",
-            "projectName": "C++_af93ea8"
-        },
-        {
             "name": "(Windows) Launch",
             "type": "cppvsdbg",
             "request": "launch",
